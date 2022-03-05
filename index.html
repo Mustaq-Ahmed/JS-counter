@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word and Character Counter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1> Word and Character Counter </h1>
+    <textarea id="textbox" cols="30" rows="10"></textarea>
+    <p>
+        <span id="word"> 0 </span> Word <span id="char"> 0 </span> Character 
+    </p>
+    <script>
+        let textboxVar = document.getElementById("textbox");
+
+        textboxVar.addEventListener("input",myText);
+        
+        function myText(){
+            let textVar = this.value; // All Entered Values Stored in textVar.
+            let charVar = textVar.length; // Because String is Sequence of Array
+           document.getElementById("char").innerHTML = charVar; 
+
+           //char is id for span character.
+           textVar = textVar.trim(); //2 This Function Ignores Spaces of First n Last.
+
+           let wordVar = textVar.split(" "); //1 splitting words through spaces.
+
+           let cleanList = wordVar.filter(function (elem){ // Array filter():
+               return elem != "";
+           });
+
+           document.getElementById("word").innerHTML = cleanList.length; 
+
+        }
+    </script>
+</body>
+</html>
